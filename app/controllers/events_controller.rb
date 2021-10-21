@@ -1,5 +1,14 @@
 class EventsController < ApplicationController
-  before_action :authenticate!, only: %i[create]
+  before_action :authenticate_user!, only: %i[index]
+  before_action :authenticate_webhook!, only: %i[create]
+
+  def index
+    event_type = params[:event_type]
+    event_number = params[:event_number]
+    events = Event.where(event_type: event_type, event_number: event_number)
+
+    render json: events
+  end
 
   def create
     Event.create(event_params)
