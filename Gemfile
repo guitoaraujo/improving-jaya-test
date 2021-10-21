@@ -13,6 +13,10 @@ group :development, :test do
   gem 'pry'
   gem 'pry-rails'
   gem 'dotenv-rails'
+  gem 'faker'
+  gem 'rails-controller-testing'
+  gem 'factory_bot_rails'
+  gem 'rspec-rails', '~> 5.0', '>= 5.0.2'
 end
 
 group :development do
