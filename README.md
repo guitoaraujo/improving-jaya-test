@@ -1,3 +1,5 @@
+## Welcome
+
 This **rails** api application is a challenge code for [Jaya Tech](https://jaya.tech/). 
 The main goal here is provide an api to track repositories issues using a **Github Webhook**.
 
@@ -19,14 +21,10 @@ After that, you need to create a **.env** file in **root folder** containing thr
 GIT_SECRET=xxxxxx
 LOGIN=xxxxxxx
 PASSWORD=xxxxxxx
+NGROK_URL=xxxxxxxxxxxxx.ngrok.io
 ```
 
 Keep in mind that you have to properly set up this informations before start to use this API.
-Ngrok needs a special configuration, just add the url in you environment file like this:
-
-```
-config.hosts << 'xxxxxxxxxx.ngrok.io'
-```
 
 If everything was done as expected, now you just need to start **rails** and **ngrok**. As you need to specify different ports for both, you can use this example below:
 
@@ -37,3 +35,7 @@ If everything was done as expected, now you just need to start **rails** and **n
 ### Tests
 For tests you can use the command below:
 > rspec
+
+
+
+by [Igor Silva](https://github.com/guitoaraujo)
