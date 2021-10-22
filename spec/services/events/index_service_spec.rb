@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Events::IndexService do
@@ -5,7 +7,7 @@ RSpec.describe Events::IndexService do
     subject { described_class.call({ event_type: :issue, event_number: event_number }) }
 
     let!(:event1) { create(:event, event_number: 1000) }
-    let!(:event2) { create(:event, event_number: 1111) } 
+    let!(:event2) { create(:event, event_number: 1111) }
     let!(:event3) { create(:event, event_number: 1000) }
 
     context 'success' do

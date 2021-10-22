@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class EventsController < ApplicationController
   before_action :authenticate_user!, only: %i[index]
   before_action :authenticate_webhook!, only: %i[create]
@@ -10,7 +12,7 @@ class EventsController < ApplicationController
 
   def create
     response = ::Events::CreateService.call(event_params)
-    
+
     render json: response
   end
 

@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe EventsController, type: :controller do  
+RSpec.describe EventsController, type: :controller do
   describe 'GET #index' do
     subject { get :index, params: { event_type: :issue, event_number: 1000 } }
 
@@ -9,7 +11,7 @@ RSpec.describe EventsController, type: :controller do
         request.headers['login'] = 'loginlogin'
         request.headers['password'] = '12345678'
       end
-  
+
       it 'is successful' do
         expect(subject).to be_successful
       end
@@ -20,7 +22,7 @@ RSpec.describe EventsController, type: :controller do
         request.headers['login'] = 'xxxxxx'
         request.headers['password'] = 'xxxxxx'
       end
-  
+
       it 'is fail' do
         expect(subject).not_to be_successful
       end
@@ -32,10 +34,10 @@ RSpec.describe EventsController, type: :controller do
   end
 
   describe 'POST #create' do
-    subject { post :create, body: webhook_request, format: :json}
+    subject { post :create, body: webhook_request, format: :json }
 
     let(:webhook_request) { build(:webhook_request).to_json }
-    
+
     before do
       request.headers['X-Hub-Signature'] = key
       request.accept = 'application/json'
@@ -43,7 +45,7 @@ RSpec.describe EventsController, type: :controller do
 
     context 'when it is a valid webhook' do
       let(:key) { 'sha1=0752596f69c0ddab5d326856b49f2a4fa2ba5ab8' }
-  
+
       it 'is successful' do
         expect(subject).to be_successful
       end
@@ -51,7 +53,7 @@ RSpec.describe EventsController, type: :controller do
 
     context 'when it is not a valid webhook' do
       let(:key) { 'xxxxxxxxxxxxxx' }
-  
+
       it 'is not successful' do
         expect(subject).not_to be_successful
       end
