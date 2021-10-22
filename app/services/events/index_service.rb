@@ -7,8 +7,6 @@ class Events::IndexService < ApplicationService
 
   def call
     Event.where(event_type: @event_type, event_number: @event_number)
-  rescue StandardError => e
-    e.message
   end
 end
 

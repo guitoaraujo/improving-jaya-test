@@ -23,11 +23,11 @@ class ApplicationController < ActionController::API
 
   def valid_user?
     if @login.present? and @password.present?
-      valid_credentials?
+      valid_user_credentials?
     end
   end
 
-  def valid_credentials?
+  def valid_user_credentials?
     @login == ENV['LOGIN'] and @password == ENV['PASSWORD']
   end
 end

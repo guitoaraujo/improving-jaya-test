@@ -9,8 +9,18 @@ class EventsController < ApplicationController
   end
 
   def create
-    response = ::Events::CreateService.call(request)
+    response = ::Events::CreateService.call(event_params)
     
     render json: response
+  end
+
+  private
+
+  def event_params
+    parsed_request = JSON.parse(request.body.read)
+    {
+      parsed_request: parsed_request,
+      event_type: parsed_request.keys[1]
+    }
   end
 end

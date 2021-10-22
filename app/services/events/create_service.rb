@@ -1,8 +1,8 @@
 class Events::CreateService < ApplicationService
 
-  def initialize(request)
-    @parsed_request = JSON.parse(request.body.read)
-    @event_type = parsed_request.keys[1]
+  def initialize(params)
+    @parsed_request = params[:parsed_request]
+    @event_type = params[:event_type]
   end
 
   def call
