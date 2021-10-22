@@ -24,7 +24,7 @@ PASSWORD=xxxxxxx
 Keep in mind that you have to properly set up this informations before start to use this API.
 Ngrok needs a special configuration, just add the url in you environment file like this:
 
-````
+```
 config.hosts << 'xxxxxxxxxx.ngrok.io'
 ```
 
