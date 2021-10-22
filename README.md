@@ -1,6 +1,6 @@
 ## Welcome
 
-This **rails** api application is a challenge code for [Jaya Tech](https://jaya.tech/). 
+This **rails** api is a challenge code for [Jaya Tech](https://jaya.tech/). 
 The main goal here is provide an api to track repositories issues using a **Github Webhook**.
 
 ### Requirements 
