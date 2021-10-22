@@ -11,7 +11,7 @@ The main goal here is provide an api to track repositories issues using a **Gith
 ### Setup
 > bundle
 
-> rails db: create db:migrate
+> rails db:create db:migrate
 
 If you have any trouble here, please make that you have **Mysql** (or something like) properly installed in your computer. 
 
