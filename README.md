@@ -13,7 +13,7 @@ The main goal here is provide an api to track repositories issues using a **Gith
 
 If you have any trouble here, please make that you have **Mysql** (or something like) properly installed in your computer. 
 
-After that, you need to create a **.env** file in **root folder** as containing three informations as below:
+After that, you need to create a **.env** file in **root folder** containing three informations as below:
 
 ```
 GIT_SECRET=xxxxxx
@@ -22,6 +22,11 @@ PASSWORD=xxxxxxx
 ```
 
 Keep in mind that you have to properly set up this informations before start to use this API.
+Ngrok needs a special configuration, just add the url in you environment file like this:
+
+````
+config.hosts << 'xxxxxxxxxx.ngrok.io'
+```
 
 If everything was done as expected, now you just need to start **rails** and **ngrok**. As you need to specify different ports for both, you can use this example below:
 

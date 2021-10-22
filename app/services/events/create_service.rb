@@ -9,8 +9,6 @@ module Events
 
     def call
       Event.create(event_params)
-    rescue StandardError => e
-      e.message
     end
 
     private

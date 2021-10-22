@@ -23,7 +23,7 @@ class ApplicationController < ActionController::API
   end
 
   def valid_user?
-    valid_user_credentials? if @login.present? && @password.present?
+    valid_user_credentials? if @login.present? and @password.present?
   end
 
   def valid_user_credentials?
