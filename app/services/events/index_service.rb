@@ -3,8 +3,6 @@
 module Events
   class IndexService < ApplicationService
     def initialize(params)
-      super
-
       @event_type = params[:event_type]
       @event_number = params[:event_number]
     end

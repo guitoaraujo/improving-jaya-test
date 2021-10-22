@@ -3,8 +3,6 @@
 module Events
   class CreateService < ApplicationService
     def initialize(params)
-      super
-
       @parsed_request = params[:parsed_request]
       @event_type = params[:event_type]
     end
