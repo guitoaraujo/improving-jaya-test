@@ -8,8 +8,8 @@ RSpec.describe EventsController, type: :controller do
 
     context 'when it is a valid user' do
       before do
-        request.headers['login'] = 'loginlogin'
-        request.headers['password'] = '12345678'
+        request.headers['login'] = ENV['LOGIN']
+        request.headers['password'] = ENV['PASSWORD']
       end
 
       it 'is successful' do
@@ -34,9 +34,10 @@ RSpec.describe EventsController, type: :controller do
   end
 
   describe 'POST #create' do
-    subject { post :create, body: webhook_request, format: :json }
+    subject { post :create, body: webhook_request, format: :json, params: params }
 
     let(:webhook_request) { build(:webhook_request).to_json }
+    let(:params) { { parsed_request: webhook_request, event_type: 'issue' } }
 
     before do
       request.headers['X-Hub-Signature'] = key
@@ -44,10 +45,15 @@ RSpec.describe EventsController, type: :controller do
     end
 
     context 'when it is a valid webhook' do
-      let(:key) { 'sha1=0752596f69c0ddab5d326856b49f2a4fa2ba5ab8' }
+      let(:key) { "sha1=#{OpenSSL::HMAC.hexdigest(OpenSSL::Digest.new('sha1'), ENV['GIT_SECRET'], webhook_request)}" }
 
       it 'is successful' do
         expect(subject).to be_successful
+      end
+
+      it 'does create a new event' do
+        subject
+        expect(Event.count).to eq(1)
       end
     end
 
@@ -60,6 +66,11 @@ RSpec.describe EventsController, type: :controller do
 
       it 'responds with 401' do
         expect(subject.response_code).to eq(401)
+      end
+
+      it 'does not create a new event' do
+        subject
+        expect(Event.count).to eq(0)
       end
     end
   end
