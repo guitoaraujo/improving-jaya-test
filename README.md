@@ -13,7 +13,7 @@ The main goal here is provide an api to track repositories issues using a **Gith
 
 > rails db:create db:migrate
 
-If you have any trouble here, please make that you have **Mysql** (or something like) properly installed in your computer. 
+If you have any trouble here, please make sure that you have **Mysql** (or something like) properly installed in your computer. 
 
 Now you just need to start **rails** and **ngrok**. Ngrok should redirect requests to your localhost, so please pay attention to your ports. You may use this example below:
 
